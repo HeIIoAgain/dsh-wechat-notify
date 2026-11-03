@@ -1,0 +1,72 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dsh-wechat-notify"
+version = "1.0.0"
+description = "On-demand WeChat notifications for DeepSeek Harness (DSH) agents and plain scripts."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "dsh-wechat-notify contributors" }]
+keywords = ["dsh", "deepseek-harness", "wechat", "notify", "skill", "bot"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: End Users/Desktop",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Communications :: Chat",
+  "Typing :: Typed",
+]
+dependencies = [
+  "wechat-openclaw-sdk>=0.1.0",
+  "qrcode[pil]>=8.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.6",
+]
+
+[project.urls]
+Homepage = "https://github.com/OWNER/dsh-wechat-notify"
+Issues = "https://github.com/OWNER/dsh-wechat-notify/issues"
+Changelog = "https://github.com/OWNER/dsh-wechat-notify/blob/main/CHANGELOG.md"
+
+[project.scripts]
+wechat-notify = "wechat_notify.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+addopts = "-ra"
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF"]
+# Long Chinese literals are compared by meaning, not by column.
+ignore = ["E501", "RUF001", "RUF002", "RUF003"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["wechat_notify"]
+
+[tool.ruff.format]
+quote-style = "double"
