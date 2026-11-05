@@ -25,16 +25,30 @@ _last_ms = 0
 _sequence = 0
 
 
-def _next_stamp() -> tuple[int, int]:
-    """Return a strictly increasing (milliseconds, sequence) pair."""
+def _next_queue_path(queue_dir: Path) -> Path:
+    """Return a queue filename that sorts strictly after everything already queued.
+
+    The name drives flush order, so it must not go backwards even if the system
+    clock does (NTP step, timezone-less VM restore), and it must stay unique even
+    when two processes land in the same millisecond.
+    """
     global _last_ms, _sequence
     ms = int(time.time() * 1000)
+    # Never sort behind a file that is already in the backlog.
+    for existing in queue_dir.glob("*.json"):
+        head = existing.name.split("-", 1)[0]
+        if head.isdigit() and int(head) > ms:
+            ms = int(head)
     if ms > _last_ms:
         _last_ms, _sequence = ms, 0
     else:
         # Same millisecond, or the clock moved backwards: keep the ordering.
         _sequence += 1
-    return _last_ms, _sequence
+    while True:
+        path = queue_dir / f"{_last_ms:013d}-{_sequence:06d}-{uuid.uuid4().hex[:6]}.json"
+        if not path.exists():
+            return path
+        _sequence += 1
 
 
 def enqueue(
@@ -50,9 +64,7 @@ def enqueue(
     file cannot corrupt the backlog.
     """
     state.queue_dir.mkdir(parents=True, exist_ok=True)
-    ms, seq = _next_stamp()
-    name = f"{ms:013d}-{seq:06d}-{uuid.uuid4().hex[:6]}.json"
-    path = state.queue_dir / name
+    path = _next_queue_path(state.queue_dir)
     record: dict = {"text": text or "", "created_at": now_str(), "reason": reason}
 
     attachments = state.queue_dir / "attachments"

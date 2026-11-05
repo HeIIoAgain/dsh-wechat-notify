@@ -6,7 +6,7 @@
 [![CI](https://github.com/HeIIoAgain/dsh-wechat-notify/actions/workflows/ci.yml/badge.svg)](https://github.com/HeIIoAgain/dsh-wechat-notify/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](pyproject.toml)
-[![Node](https://img.shields.io/badge/node-%E2%89%A518%20(plugin%20only)-green.svg)](#可选插件每轮结束自动推)
+[![Node](https://img.shields.io/badge/node-%E2%89%A518%20%28plugin%20only%29-green.svg)](#可选插件每轮结束自动推)
 
 [English](README.en.md) | 简体中文
 
@@ -199,9 +199,6 @@ node --test plugin/test/index.test.mjs     # Node ≥ 18
 
 测试全部离线：SDK 客户端与网络调用都被替换，状态目录指向 `tmp_path`，不会碰你的真实凭据。
 细节见 [CONTRIBUTING.md](CONTRIBUTING.md)。
-
-想把这个仓库发到 GitHub？照 [docs/publishing.md](docs/publishing.md) 的清单走：替换 `OWNER`
-占位符 → `git init` / push → 打 `v1.0.0` tag → 开 Private vulnerability reporting 与分支保护。
 
 ## 故障排查
 

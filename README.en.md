@@ -202,10 +202,6 @@ node --test plugin/test/index.test.mjs
 Everything runs offline: the SDK client and network calls are patched, and each test gets a
 temporary state directory. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-Publishing this repository? Follow the checklist in [docs/publishing.md](docs/publishing.md):
-replace the `OWNER` placeholders, `git init` and push, tag `v1.0.0`, then enable private
-vulnerability reporting and branch protection.
-
 ## Troubleshooting
 
 | Symptom | Fix |
