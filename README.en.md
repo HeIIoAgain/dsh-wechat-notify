@@ -6,7 +6,7 @@ agents and plain scripts, delivered through the WeChat iLink OpenClaw bot channe
 Nothing is ever pushed on its own: a message goes out only when you explicitly ask for it
 ("send me that on WeChat", "push the result to my WeChat", and so on).
 
-[![CI](https://github.com/OWNER/dsh-wechat-notify/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/dsh-wechat-notify/actions/workflows/ci.yml)
+[![CI](https://github.com/HeIIoAgain/dsh-wechat-notify/actions/workflows/ci.yml/badge.svg)](https://github.com/HeIIoAgain/dsh-wechat-notify/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](pyproject.toml)
 
@@ -49,7 +49,7 @@ What the channel itself does **not** allow (protocol limits, not laziness):
 ### As a DSH skill (recommended)
 
 ```powershell
-git clone https://github.com/OWNER/dsh-wechat-notify.git
+git clone https://github.com/HeIIoAgain/dsh-wechat-notify.git
 cd dsh-wechat-notify
 powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1     # Windows
 ```
@@ -67,7 +67,7 @@ Flags: `-Dest/--dest`, `-Python/--python`, `-NoDeps/--no-deps`, `-Force/--force`
 ### As a standalone CLI
 
 ```bash
-python -m pip install "git+https://github.com/OWNER/dsh-wechat-notify.git"
+python -m pip install "git+https://github.com/HeIIoAgain/dsh-wechat-notify.git"
 wechat-notify --version
 ```
 

@@ -5,7 +5,7 @@ Thanks for taking a look. This project is small on purpose; the notes below keep
 ## Development setup
 
 ```bash
-git clone https://github.com/OWNER/dsh-wechat-notify.git
+git clone https://github.com/HeIIoAgain/dsh-wechat-notify.git
 cd dsh-wechat-notify
 python -m venv .venv
 # Windows: .venv\Scripts\activate    macOS/Linux: source .venv/bin/activate

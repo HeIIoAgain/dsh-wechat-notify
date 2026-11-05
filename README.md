@@ -3,7 +3,7 @@
 把文字 / 图片 / 文件按需发到**你自己**微信的 DSH 技能 + 命令行工具，走微信 iLink OpenClaw
 机器人渠道。默认不主动发送：只有你明确说"发我微信"才会发。
 
-[![CI](https://github.com/OWNER/dsh-wechat-notify/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/dsh-wechat-notify/actions/workflows/ci.yml)
+[![CI](https://github.com/HeIIoAgain/dsh-wechat-notify/actions/workflows/ci.yml/badge.svg)](https://github.com/HeIIoAgain/dsh-wechat-notify/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](pyproject.toml)
 [![Node](https://img.shields.io/badge/node-%E2%89%A518%20(plugin%20only)-green.svg)](#可选插件每轮结束自动推)
@@ -40,14 +40,14 @@ DSH 在电脑上跑长任务时，人不在跟前。你希望手机上收到结�
 
 ```powershell
 # Windows
-git clone https://github.com/OWNER/dsh-wechat-notify.git
+git clone https://github.com/HeIIoAgain/dsh-wechat-notify.git
 cd dsh-wechat-notify
 powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1
 ```
 
 ```bash
 # macOS / Linux
-git clone https://github.com/OWNER/dsh-wechat-notify.git
+git clone https://github.com/HeIIoAgain/dsh-wechat-notify.git
 cd dsh-wechat-notify
 bash install.sh
 ```
@@ -61,7 +61,7 @@ bash install.sh
 ### 方式二：只当命令行工具
 
 ```bash
-python -m pip install "git+https://github.com/OWNER/dsh-wechat-notify.git"
+python -m pip install "git+https://github.com/HeIIoAgain/dsh-wechat-notify.git"
 wechat-notify --version
 ```
 

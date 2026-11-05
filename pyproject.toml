@@ -36,9 +36,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/OWNER/dsh-wechat-notify"
-Issues = "https://github.com/OWNER/dsh-wechat-notify/issues"
-Changelog = "https://github.com/OWNER/dsh-wechat-notify/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/HeIIoAgain/dsh-wechat-notify"
+Issues = "https://github.com/HeIIoAgain/dsh-wechat-notify/issues"
+Changelog = "https://github.com/HeIIoAgain/dsh-wechat-notify/blob/main/CHANGELOG.md"
 
 [project.scripts]
 wechat-notify = "wechat_notify.cli:main"
