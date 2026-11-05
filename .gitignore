@@ -1,0 +1,53 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# --- 打包 / 构建 ---
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# --- 测试与工具缓存 ---
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# --- 虚拟环境 ---
+.venv/
+venv/
+env/
+
+# --- 运行期状态：这里是真密钥，绝对不能进版本库 ---
+# state/credentials.json 存 bot_token，等同机器人身份
+state/
+scripts/state/
+credentials.json
+target.json
+qr.png
+queue/
+
+# --- 日志（正文会写进 notify.log） ---
+*.log
+
+# --- 本地配置 ---
+.env
+.env.*
+
+# --- Node（可选插件的测试产物） ---
+node_modules/
+
+# --- 系统与编辑器噪音 ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+*~

@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 安全问题 / Security report
+    url: https://github.com/HeIIoAgain/dsh-wechat-notify/security/advisories/new
+    about: 请不要公开提交 issue，按 SECURITY.md 的流程私密上报（含 bot_token 泄露）。
+  - name: 使用问题 / Usage questions
+    url: https://github.com/HeIIoAgain/dsh-wechat-notify/blob/main/README.md
+    about: 安装、扫码登录、prime / run、退出码含义，先看 README 与 docs/protocol.md。
