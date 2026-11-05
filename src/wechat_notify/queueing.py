@@ -17,6 +17,25 @@ from .errors import NoSessionError
 from .state import State, atomic_write_json, read_json
 from .util import log, now_str
 
+# Queue files are named "<13-digit ms>-<6-digit sequence>-<random>.json" and flushed
+# in filename order, so the name has to be strictly increasing. A bare millisecond
+# stamp is not enough: two enqueues inside the same millisecond would only differ by
+# the random suffix, and `pending()` would then hand back an arbitrary order.
+_last_ms = 0
+_sequence = 0
+
+
+def _next_stamp() -> tuple[int, int]:
+    """Return a strictly increasing (milliseconds, sequence) pair."""
+    global _last_ms, _sequence
+    ms = int(time.time() * 1000)
+    if ms > _last_ms:
+        _last_ms, _sequence = ms, 0
+    else:
+        # Same millisecond, or the clock moved backwards: keep the ordering.
+        _sequence += 1
+    return _last_ms, _sequence
+
 
 def enqueue(
     state: State,
@@ -31,7 +50,8 @@ def enqueue(
     file cannot corrupt the backlog.
     """
     state.queue_dir.mkdir(parents=True, exist_ok=True)
-    name = f"{int(time.time() * 1000)}-{uuid.uuid4().hex[:6]}.json"
+    ms, seq = _next_stamp()
+    name = f"{ms:013d}-{seq:06d}-{uuid.uuid4().hex[:6]}.json"
     path = state.queue_dir / name
     record: dict = {"text": text or "", "created_at": now_str(), "reason": reason}
 
